@@ -11,7 +11,9 @@ app.get("/colors", (req, res) => {
 
   const { quantity = 5 } = req.query;
 
-  colors = Array.from({ length: Number(quantity) }).map((_, i) => ({
+  const length = +quantity <= 20 ? +quantity : 20;
+
+  colors = Array.from({ length }).map((_, i) => ({
     [`color${i + 1}`]: generateRandomColor(),
   }));
 
